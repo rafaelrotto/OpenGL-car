@@ -288,23 +288,21 @@ void display()
 
 	glPushMatrix(); // comeco do chao
 	glTranslatef(0, -510, 0);
-	glColor3d(0, 1, 0); // cor do chão
+	glColor3d(0.5, 0.5, 0.5); // cor do chão
 	glutSolidCube(1000);
 	glPopMatrix(); // fim do chao
 
-
 	polarView();
+
 	glPushMatrix(); // comeco do carro
-	glTranslatef(0, 10, -10); 
+	glTranslatef(0, 10, -10);
 	glColor3d(1, 0, 0); // comeco da cor no meio
 	glutSolidCube(30);
 
-
-	glPushMatrix(); // comeco do carro
-	glTranslatef(0, -7, 8); //posição do cubo azul
-	glColor3d(0, 0, 1); // cubo azul
+	glPushMatrix();			// comeco do carro
+	glTranslatef(0, -7, 8); // posição do cubo azul
+	glColor3d(0, 0, 1);		// cubo azul
 	glutSolidCube(15);
-	
 
 	// roda esquerda //
 	glTranslatef(16, -6.5, 0); // posição da roda
@@ -318,12 +316,10 @@ void display()
 	glColor3d(0, 0, 0);
 	glutSolidTorus(2, 5, 100, 100);
 
-
-	glPushMatrix(); // comeco da cabine
+	glPushMatrix();			  // comeco da cabine
 	glTranslatef(40, 21, 16); // posição da cabine?
-	glColor3d(0, 0, 1); // comeco da cor no meio
-	glutSolidCube(45); // tamaho da cabine
-
+	glColor3d(0, 0, 1);		  // comeco da cor no meio
+	glutSolidCube(45);		  // tamaho da cabine
 
 	// roda traseira esquerda //
 	glTranslatef(10, -21, 23); // posição da roda
@@ -331,21 +327,20 @@ void display()
 	glColor3d(0, 0, 0);
 	glutSolidTorus(2, 5, 100, 100);
 
-
 	// roda traseira direita //
 	glTranslatef(50, 0, -7); // posição da roda
 	glRotatef(0, 0, 1, 0);
 	glColor3d(0, 0, 0);
 	glutSolidTorus(2, 5, 100, 100);
 
-
+	// poste de luz //
 	glPushMatrix();				// comeco do poste
 	glTranslatef(-100, -7, 70); // comeco do tronco
 	glRotatef(90, -1, 0, 0);
 	glColor3d(0.5, 0.5, 0.5);
 	glutSolidCylinder(2, 50, 100, 20); // fim do tronco
 
-
+	// lampada //
 	glRotatef(90, 1, 0, 0); // comeco do lugar da lampada
 	glTranslatef(2.5, 50, 0);
 	glScalef(1.5, 0.333, 1);
@@ -357,31 +352,80 @@ void display()
 	glutSolidSphere(1, 10, 10); // fim da lampada
 	glPopMatrix();
 
-/*
-	glPushMatrix(); // comeco da Arvore
 
-	glTranslatef(40, -15, 20); // comeco do tronco
+	/** Boneco **/
+
+	// cabeça //
+	glScalef(1, 1, 1);
+	glTranslatef(-150, 20, 50);
+	glColor3d(1, 1, 1);
+	glutSolidSphere(5, 200, 10);
+
+	// corpo //
+	glScalef(1, 1, 1);
+	glTranslatef(0, -10, 0);
+	glColor3d(0, 0, 0);
+	glutSolidSphere(5, 200, 10);
+
+	// braço direito				
+	glTranslatef(0, -6, 5);
 	glRotatef(90, -1, 0, 0);
-	glColor3d(0.39, 0.26, 0.13);
-	glutSolidCylinder(5, 100, 100, 20); // fim do tronco
+	glColor3d(0, 0, 0);
+	glutSolidCylinder(1, 10, 10, 2);
 
-	glRotatef(90, 1, 0, 0); // comeco das folhas
-	glTranslatef(0, 100, 10);
-	glColor3d(0, 1, 0);
-	glutSolidSphere(20, 100, 100);
-	glTranslatef(0, 0, -20);
-	glutSolidSphere(20, 100, 100);
-	glTranslatef(10, 0, 10);
-	glutSolidSphere(20, 100, 100);
-	glTranslatef(-20, 0, 0);
-	glutSolidSphere(20, 100, 100);
-	glTranslatef(10, 20, 0);
-	glutSolidSphere(20, 100, 100); // fim das folhas
+	// braço esquerdo //
+	glTranslatef(0, 10, 0);
+	glRotatef(0, -1, 0, 0);
+	glColor3d(0, 0, 0);
+	glutSolidCylinder(1, 10, 10, 2);
 
-	glPopMatrix(); // fim da Arvore
+	// perna esquerda //
+	glTranslatef(0, -3, -11);
+	glRotatef(0, -1, 0, 0);
+	glColor3d(1, 0, 0);
+	glutSolidCylinder(2, 16, 10, 2);
 
-*/
-				// fim do poste
+	// perna direita //
+	glTranslatef(0, -4, 0);
+	glRotatef(0, -1, 0, 0);
+	glColor3d(1, 0, 0);
+	glutSolidCylinder(2, 16, 10, 2);
+
+	/** Sol **/
+
+	glScalef(1, 1, 1);
+	glTranslatef(100, -15, 70);
+	glColor3d(1, 1, 0);
+	glutSolidSphere(5, 200, 10);
+ 
+
+
+
+	/*
+		glPushMatrix(); // comeco da Arvore
+
+		glTranslatef(40, -15, 20); // comeco do tronco
+		glRotatef(90, -1, 0, 0);
+		glColor3d(0.39, 0.26, 0.13);
+		glutSolidCylinder(5, 100, 100, 20); // fim do tronco
+
+		glRotatef(90, 1, 0, 0); // comeco das folhas
+		glTranslatef(0, 100, 10);
+		glColor3d(0, 1, 0);
+		glutSolidSphere(20, 100, 100);
+		glTranslatef(0, 0, -20);
+		glutSolidSphere(20, 100, 100);
+		glTranslatef(10, 0, 10);
+		glutSolidSphere(20, 100, 100);
+		glTranslatef(-20, 0, 0);
+		glutSolidSphere(20, 100, 100);
+		glTranslatef(10, 20, 0);
+		glutSolidSphere(20, 100, 100); // fim das folhas
+
+		glPopMatrix(); // fim da Arvore
+
+	*/
+	// fim do poste
 
 	glutSwapBuffers();
 }
@@ -539,7 +583,7 @@ int main(int argc, char **argv)
 
 	// Cria a janela passando como argumento o título da mesma
 
-	glutCreateWindow("Quero Morrer!");
+	glutCreateWindow("Open GL car");
 
 	// Registra a função callback de redesenho da janela de visualização
 
