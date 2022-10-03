@@ -276,11 +276,105 @@ void Reshape(GLsizei w, GLsizei h)
 	EspecificaParametrosVisualizacao();
 }
 
-void nuvem(){
+void tree(){
+
+	glPushMatrix(); // comeco da Arvore
+
+		glTranslatef(100, -30, -95); // comeco do tronco
+		glRotatef(0, -1, 0, 0);
+		glColor3d(0.39, 0.26, 0.13);
+		glutSolidCylinder(5, 100, 100, 20); // fim do tronco
+
+		glRotatef(90, 1, 0, 0); // comeco das folhas
+		glTranslatef(0, 100, 10);
+		glColor3d(0, 1, 0);
+		glutSolidSphere(20, 100, 100);
+		glTranslatef(0, 0, -20);
+		glutSolidSphere(20, 100, 100);
+		glTranslatef(10, 0, 10);
+		glutSolidSphere(20, 100, 100);
+		glTranslatef(-20, 0, 0);
+		glutSolidSphere(20, 100, 100);
+		glTranslatef(10, 20, 0);
+		glutSolidSphere(20, 100, 100); // fim das folhas
+
+	glPopMatrix(); // fim da Arvore
+
+}
+
+void clouds(){
 	glScalef(1, 1, 1);
-	glTranslatef(0, 20, 0);
+	glTranslatef(0, 50, 0);
 	glColor3d(1, 1, 1);
 	glutSolidSphere(5, 200, 10);
+
+	glScalef(1, 1, 1);
+	glTranslatef(0, 7, 0);
+	glColor3d(1, 1, 1);
+	glutSolidSphere(5, 200, 10);
+
+	glScalef(1, 1, 1);
+	glTranslatef(0, 7, 0);
+	glColor3d(1, 1, 1);
+	glutSolidSphere(5, 200, 10);
+
+	glScalef(1, 1, 1);
+	glTranslatef(0, -7, 7);
+	glColor3d(1, 1, 1);
+	glutSolidSphere(5, 200, 10);
+
+	// nuvem 2 //
+
+	glScalef(1, 1, 1);
+	glTranslatef(100, 50, 0);
+	glColor3d(1, 1, 1);
+	glutSolidSphere(5, 200, 10);
+
+	glScalef(1, 1, 1);
+	glTranslatef(0, 7, 0);
+	glColor3d(1, 1, 1);
+	glutSolidSphere(5, 200, 10);
+
+	glScalef(1, 1, 1);
+	glTranslatef(0, 7, 0);
+	glColor3d(1, 1, 1);
+	glutSolidSphere(5, 200, 10);
+
+	glScalef(1, 1, 1);
+	glTranslatef(0, -7, 7);
+	glColor3d(1, 1, 1);
+	glutSolidSphere(5, 200, 10);
+
+	// nuvem 3 //
+
+	glScalef(1, 1, 1);
+	glTranslatef(-40, 50, 0);
+	glColor3d(1, 1, 1);
+	glutSolidSphere(5, 200, 10);
+
+	glScalef(1, 1, 1);
+	glTranslatef(7, 0, 0);
+	glColor3d(1, 1, 1);
+	glutSolidSphere(5, 200, 10);
+
+	glScalef(1, 1, 1);
+	glTranslatef(7, 0, 0);
+	glColor3d(1, 1, 1);
+	glutSolidSphere(5, 200, 10);
+
+	glScalef(1, 1, 1);
+	glTranslatef(-7, 0, 7);
+	glColor3d(1, 1, 1);
+	glutSolidSphere(5, 200, 10);
+}
+
+void sun(){
+
+	glScalef(1, 1, 1);
+	glTranslatef(100, -15, 70);
+	glColor3d(1, 1, 0);
+	glutSolidSphere(5, 200, 10);
+
 }
 
 void car(){
@@ -416,39 +510,11 @@ void display()
 	glutSolidCylinder(2, 16, 10, 2);
 
 	/** Sol **/
+	sun();
 
-	glScalef(1, 1, 1);
-	glTranslatef(100, -15, 70);
-	glColor3d(1, 1, 0);
-	glutSolidSphere(5, 200, 10);
+	clouds();
 
-	nuvem();
-
-	/*
-		glPushMatrix(); // comeco da Arvore
-
-		glTranslatef(40, -15, 20); // comeco do tronco
-		glRotatef(90, -1, 0, 0);
-		glColor3d(0.39, 0.26, 0.13);
-		glutSolidCylinder(5, 100, 100, 20); // fim do tronco
-
-		glRotatef(90, 1, 0, 0); // comeco das folhas
-		glTranslatef(0, 100, 10);
-		glColor3d(0, 1, 0);
-		glutSolidSphere(20, 100, 100);
-		glTranslatef(0, 0, -20);
-		glutSolidSphere(20, 100, 100);
-		glTranslatef(10, 0, 10);
-		glutSolidSphere(20, 100, 100);
-		glTranslatef(-20, 0, 0);
-		glutSolidSphere(20, 100, 100);
-		glTranslatef(10, 20, 0);
-		glutSolidSphere(20, 100, 100); // fim das folhas
-
-		glPopMatrix(); // fim da Arvore
-
-	*/
-	// fim do poste
+	tree();
 
 	glutSwapBuffers();
 }
