@@ -276,6 +276,34 @@ void Reshape(GLsizei w, GLsizei h)
 	EspecificaParametrosVisualizacao();
 }
 
+void house(){
+	glPushMatrix(); // comeco da casa
+		glTranslatef(150, -150, -60); // lado esquerdo
+		glColor3d(1, 0, 1);
+		glutSolidCube(70);
+
+		glTranslatef(0, -70, 0);
+		glColor3d(1, 0, 1); // lado direito
+		glutSolidCube(70);
+
+		glTranslatef(-11, 0, -10);
+		glColor3d(1, 1, 1); // porta garagem
+		glutSolidCube(50);
+
+		glTranslatef(-18, 45, 5);
+		glColor3d(0, 0, 0); // janela
+		glutSolidCube(15);
+
+		glTranslatef(0, 25, -8);
+		glColor3d(0, 0, 0); // porta (cima)
+		glutSolidCube(15);
+
+		glTranslatef(0, 0, -15);
+		glColor3d(0, 0, 0); // porta (baixo)
+		glutSolidCube(15);
+	glPopMatrix(); // fim da casa
+}
+
 void tree(){
 
 	glPushMatrix(); // comeco da Arvore
@@ -509,12 +537,13 @@ void display()
 	glColor3d(1, 0, 0);
 	glutSolidCylinder(2, 16, 10, 2);
 
-	/** Sol **/
 	sun();
 
 	clouds();
 
 	tree();
+
+	house ();
 
 	glutSwapBuffers();
 }
