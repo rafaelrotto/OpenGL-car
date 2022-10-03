@@ -276,6 +276,68 @@ void Reshape(GLsizei w, GLsizei h)
 	EspecificaParametrosVisualizacao();
 }
 
+void nuvem(){
+	glScalef(1, 1, 1);
+	glTranslatef(0, 20, 0);
+	glColor3d(1, 1, 1);
+	glutSolidSphere(5, 200, 10);
+}
+
+void car(){
+
+	glPushMatrix(); // comeco do carro
+		glTranslatef(0, 10, -10);
+		glColor3d(1, 0, 0); // comeco da cor no meio
+		glutSolidCube(30);
+
+		glPushMatrix();			// comeco do carro
+			glTranslatef(0, -7, 8); // posição do cubo azul
+			glColor3d(0, 0, 1);		// cubo azul
+			glutSolidCube(15);
+		glPopMatrix();
+
+		// roda esquerda //
+		glPushMatrix();	
+			glTranslatef(16, -13.5, 0); // posição da roda
+			glRotatef(90, 0, 1, 0);
+			glColor3d(0, 0, 0);
+			glutSolidTorus(2, 5, 100, 100);
+		glPopMatrix();
+
+		// roda direita //
+		glPushMatrix();	
+			glTranslatef(-16, -13.5, -2); // posição da roda
+			glRotatef(90, 0, 1, 0);
+			glColor3d(0, 0, 0);
+			glutSolidTorus(2, 5, 100, 100);
+		glPopMatrix();
+	
+		// comeco da cabine
+		glPushMatrix();	
+			glTranslatef(0, 7, -35); // posição da cabine?
+			glColor3d(0, 0, 1);		  // comeco da cor no meio
+			glutSolidCube(45);		  // tamaho da cabine
+		glPopMatrix();
+
+		// roda traseira esquerda //
+		glPushMatrix();
+			glTranslatef(-24, -13.5, -40); // posição da roda 
+			glRotatef(90, 0, 1, 0);
+			glColor3d(0, 0, 0);
+			glutSolidTorus(2, 5, 100, 100);
+		glPopMatrix();
+
+		// roda traseira direita //
+		glPushMatrix();
+			glTranslatef(24, -13.5, -40); // posição da roda
+			glRotatef(90, 0, 1, 0); // angulo // altura //
+			glColor3d(0, 0, 0);
+			glutSolidTorus(2, 5, 100, 100);
+		glPopMatrix();
+	glPopMatrix();
+
+}
+
 // adicionar as formas a serem mostradas na cena
 void display()
 {
@@ -287,51 +349,14 @@ void display()
 	DefineIluminacao();
 
 	glPushMatrix(); // comeco do chao
-	glTranslatef(0, -510, 0);
-	glColor3d(0.5, 0.5, 0.5); // cor do chão
-	glutSolidCube(1000);
-	glPopMatrix(); // fim do chao
+		glTranslatef(0, -510, 0);
+		glColor3d(0.5, 0.5, 0.5); // cor do chão
+		glutSolidCube(1000);
+		glPopMatrix(); // fim do chao
 
 	polarView();
 
-	glPushMatrix(); // comeco do carro
-	glTranslatef(0, 10, -10);
-	glColor3d(1, 0, 0); // comeco da cor no meio
-	glutSolidCube(30);
-
-	glPushMatrix();			// comeco do carro
-	glTranslatef(0, -7, 8); // posição do cubo azul
-	glColor3d(0, 0, 1);		// cubo azul
-	glutSolidCube(15);
-
-	// roda esquerda //
-	glTranslatef(16, -6.5, 0); // posição da roda
-	glRotatef(90, 0, 1, 0);
-	glColor3d(0, 0, 0);
-	glutSolidTorus(2, 5, 100, 100);
-
-	// roda direita //
-	glTranslatef(-16, -3.5, -2); // posição da roda
-	glRotatef(90, 0, 1, 0);
-	glColor3d(0, 0, 0);
-	glutSolidTorus(2, 5, 100, 100);
-
-	glPushMatrix();			  // comeco da cabine
-	glTranslatef(40, 21, 16); // posição da cabine?
-	glColor3d(0, 0, 1);		  // comeco da cor no meio
-	glutSolidCube(45);		  // tamaho da cabine
-
-	// roda traseira esquerda //
-	glTranslatef(10, -21, 23); // posição da roda
-	glRotatef(0, 0, 1, 0);
-	glColor3d(0, 0, 0);
-	glutSolidTorus(2, 5, 100, 100);
-
-	// roda traseira direita //
-	glTranslatef(50, 0, -7); // posição da roda
-	glRotatef(0, 0, 1, 0);
-	glColor3d(0, 0, 0);
-	glutSolidTorus(2, 5, 100, 100);
+	car();
 
 	// poste de luz //
 	glPushMatrix();				// comeco do poste
@@ -352,7 +377,6 @@ void display()
 	glutSolidSphere(1, 10, 10); // fim da lampada
 	glPopMatrix();
 
-
 	/** Boneco **/
 
 	// cabeça //
@@ -367,7 +391,7 @@ void display()
 	glColor3d(0, 0, 0);
 	glutSolidSphere(5, 200, 10);
 
-	// braço direito				
+	// braço direito
 	glTranslatef(0, -6, 5);
 	glRotatef(90, -1, 0, 0);
 	glColor3d(0, 0, 0);
@@ -397,9 +421,8 @@ void display()
 	glTranslatef(100, -15, 70);
 	glColor3d(1, 1, 0);
 	glutSolidSphere(5, 200, 10);
- 
 
-
+	nuvem();
 
 	/*
 		glPushMatrix(); // comeco da Arvore
