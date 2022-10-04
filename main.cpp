@@ -112,17 +112,6 @@ void EspecificaParametrosVisualizacao(void)
 	PosicionaObservador();
 }
 
-// Função callback chamada para gerenciar eventos de teclas normais (ESC)
-
-void Teclado(unsigned char tecla, int x, int y)
-
-{
-
-	if (tecla == 27) // ESC ?
-
-		exit(0);
-}
-
 // Função callback para tratar eventos de teclas especiais
 
 void TeclasEspeciais(int tecla, int x, int y)
@@ -584,39 +573,28 @@ void keySpecial(int key, int x, int y)
 
 void myKeyboard(unsigned char c, int x, int y)
 {
-	switch (c)
-	{
-	case 27: // ESC em ASCII
-		exit(0);
-		break;
-	case 'w':
-		incidence += 2;
-		break;
-	case 's':
-		incidence -= 2;
-		break;
-	case 'z':
-		distance++;
-		break;
-	case 'x':
-		distance--;
-		break;
-	case 'd':
-		azimuth += 5;
-		break;
-	case 'a':
-		azimuth -= 5;
-		break;
-	case 'e':
-		twist += 5;
-		break;
-	case 'q':
-		twist -= 5;
-		break;
-	case 'p':
-		exit(0);
-		break;
-	}
+	switch(c)
+    {
+        case  27: exit(0);          break; // ESC
+
+        case 'a': azimuth   -= 0.5; break;
+
+        case 'd': azimuth   += 0.5; break;
+
+        case 'w': incidence -= 0.5; break;
+
+        case 's': incidence += 0.5; break;
+
+        case 'q': twist     -= 0.5; break;
+
+        case 'e': twist     += 0.5; break;
+
+        case 'z': distance  -= 0.1; break;
+
+        case 'x': distance  += 0.1; break;
+
+    }
+    glutPostRedisplay();
 }
 
 // imprimir as coordenadas com o clique do mouse
@@ -713,15 +691,15 @@ int main(int argc, char **argv)
 
 	// Registra a função callback para tratamento das teclas normais
 
-	glutKeyboardFunc(Teclado);
+	glutKeyboardFunc(myKeyboard);
 
 	// Registra a função callback para tratamento das teclas especiais
 
-	glutSpecialFunc(TeclasEspeciais);
+	glutSpecialFunc(keySpecial);
 
 	// Registra a função callback para eventos de botões do mouse
 
-	glutMouseFunc(GerenciaMouse);
+	glutMouseFunc(myMouse);
 
 	// Registra a função callback para eventos de movimento do mouse
 
