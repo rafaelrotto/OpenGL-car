@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <math.h>
 
+float xr = 0, yr = 0;
+
 GLint b = 300;
 float counter = 600.0;
 
@@ -265,61 +267,123 @@ void Reshape(GLsizei w, GLsizei h)
 	EspecificaParametrosVisualizacao();
 }
 
-void house(){
-	glPushMatrix(); // comeco da casa
-		glTranslatef(150, -150, -60); // lado esquerdo
-		glColor3d(1, 0, 1);
-		glutSolidCube(70);
+void house()
+{
+	glPushMatrix();				  // comeco da casa
+	glTranslatef(150, -150, -60); // lado esquerdo
+	glColor3d(1, 0, 1);
+	glutSolidCube(70);
 
-		glTranslatef(0, -70, 0);
-		glColor3d(1, 0, 1); // lado direito
-		glutSolidCube(70);
+	glTranslatef(0, -70, 0);
+	glColor3d(1, 0, 1); // lado direito
+	glutSolidCube(70);
 
-		glTranslatef(-11, 0, -10);
-		glColor3d(1, 1, 1); // porta garagem
-		glutSolidCube(50);
+	glTranslatef(-11, 0, -10);
+	glColor3d(1, 1, 1); // porta garagem
+	glutSolidCube(50);
 
-		glTranslatef(-18, 45, 5);
-		glColor3d(0, 0, 0); // janela
-		glutSolidCube(15);
+	glTranslatef(-18, 45, 5);
+	glColor3d(0, 0, 0); // janela
+	glutSolidCube(15);
 
-		glTranslatef(0, 25, -8);
-		glColor3d(0, 0, 0); // porta (cima)
-		glutSolidCube(15);
+	glTranslatef(0, 25, -8);
+	glColor3d(0, 0, 0); // porta (cima)
+	glutSolidCube(15);
 
-		glTranslatef(0, 0, -15);
-		glColor3d(0, 0, 0); // porta (baixo)
-		glutSolidCube(15);
+	glTranslatef(0, 0, -15);
+	glColor3d(0, 0, 0); // porta (baixo)
+	glutSolidCube(15);
+
+	glTranslatef(-8, -5, 10);
+	glColor3d(1, 1, 1); // trinco da porta
+	glutSolidCube(3);
+
+	glTranslatef(10, -8, 35);
+	glColor3d(1, 1, 0); // começo placa
+	glutSolidCube(20);
+
+	glTranslatef(0, 20, 0);
+	glColor3d(1, 1, 0); // fim placa
+	glutSolidCube(20);
+
+	glTranslatef(-10, 0, 0); // B
+	glRotatef(90, 0, 1, 0);
+	glColor3d(0, 0, 0);
+	glutSolidTorus(0.5, 2, 50, 50);
+
+	glTranslatef(-4, 0, 0); // B
+	glRotatef(0, 0, 1, 0);
+	glColor3d(0, 0, 0);
+	glutSolidTorus(0.5, 2, 50, 50);
+
+	glTranslatef(7, 2, 0); // B
+	glRotatef(90, -1, -180, 0);
+	glColor3d(0, 0, 0);
+	glutSolidCylinder(1, 10, 10, 2);
+
+	glTranslatef(0, -8, 0); // A
+	glRotatef(0, -1, 0, 0);
+	glColor3d(0, 0, 0);
+	glutSolidCylinder(1, 10, 10, 2);
+
+	glTranslatef(0, -4, 0); // A
+	glRotatef(0, -1, 0, 0);
+	glColor3d(0, 0, 0);
+	glutSolidCylinder(1, 10, 10, 2);
+
+	glTranslatef(0, -4, 0); // A
+	glRotatef(0, -1, 0, 0);
+	glColor3d(0, 0, 0);
+	glutSolidCylinder(1, 10, 10, 2);
+
+	glTranslatef(0, -6, 0); // R
+	glRotatef(45, -1, 0, 0);
+	glColor3d(0, 0, 0);
+	glutSolidCylinder(1, 5, 5, 2);
+
+	glTranslatef(0, -3, 7); // B
+	glRotatef(90, 0, 1, 0);
+	glColor3d(0, 0, 0);
+	glutSolidTorus(0.5, 2, 50, 50);
+
+	glTranslatef(-7, 6, 0); // B
+	glRotatef(0, 0, 1, 0);
+	glColor3d(0, 0, 0);
+	glutSolidTorus(0.5, 2, 50, 50);
+
+
+	
 	glPopMatrix(); // fim da casa
 }
 
-void tree(){
+void tree()
+{
 
 	glPushMatrix(); // comeco da Arvore
 
-		glTranslatef(100, -30, -95); // comeco do tronco
-		glRotatef(0, -1, 0, 0);
-		glColor3d(0.39, 0.26, 0.13);
-		glutSolidCylinder(5, 100, 100, 20); // fim do tronco
+	glTranslatef(100, -30, -95); // comeco do tronco
+	glRotatef(0, -1, 0, 0);
+	glColor3d(0.39, 0.26, 0.13);
+	glutSolidCylinder(5, 100, 100, 20); // fim do tronco
 
-		glRotatef(90, 1, 0, 0); // comeco das folhas
-		glTranslatef(0, 100, 10);
-		glColor3d(0, 1, 0);
-		glutSolidSphere(20, 100, 100);
-		glTranslatef(0, 0, -20);
-		glutSolidSphere(20, 100, 100);
-		glTranslatef(10, 0, 10);
-		glutSolidSphere(20, 100, 100);
-		glTranslatef(-20, 0, 0);
-		glutSolidSphere(20, 100, 100);
-		glTranslatef(10, 20, 0);
-		glutSolidSphere(20, 100, 100); // fim das folhas
+	glRotatef(90, 1, 0, 0); // comeco das folhas
+	glTranslatef(0, 100, 10);
+	glColor3d(0, 1, 0);
+	glutSolidSphere(20, 100, 100);
+	glTranslatef(0, 0, -20);
+	glutSolidSphere(20, 100, 100);
+	glTranslatef(10, 0, 10);
+	glutSolidSphere(20, 100, 100);
+	glTranslatef(-20, 0, 0);
+	glutSolidSphere(20, 100, 100);
+	glTranslatef(10, 20, 0);
+	glutSolidSphere(20, 100, 100); // fim das folhas
 
 	glPopMatrix(); // fim da Arvore
-
 }
 
-void clouds(){
+void clouds()
+{
 	glScalef(1, 1, 1);
 	glTranslatef(0, 50, 0);
 	glColor3d(1, 1, 1);
@@ -385,114 +449,21 @@ void clouds(){
 	glutSolidSphere(5, 200, 10);
 }
 
-void sun(){
-
+void sun()
+{
 	glScalef(1, 1, 1);
 	glTranslatef(100, -15, 70);
 	glColor3d(1, 1, 0);
 	glutSolidSphere(5, 200, 10);
-
 }
 
-void car(){
-
-	glPushMatrix(); // comeco do carro
-		glTranslatef(0, 10, -10);
-		glColor3d(1, 0, 0); // comeco da cor no meio
-		glutSolidCube(30);
-
-		glPushMatrix();			// comeco do carro
-			glTranslatef(0, -7, 8); // posição do cubo azul
-			glColor3d(0, 0, 1);		// cubo azul
-			glutSolidCube(15);
-		glPopMatrix();
-
-		// roda esquerda //
-		glPushMatrix();	
-			glTranslatef(16, -13.5, 0); // posição da roda
-			glRotatef(90, 0, 1, 0);
-			glColor3d(0, 0, 0);
-			glutSolidTorus(2, 5, 100, 100);
-		glPopMatrix();
-
-		// roda direita //
-		glPushMatrix();	
-			glTranslatef(-16, -13.5, -2); // posição da roda
-			glRotatef(90, 0, 1, 0);
-			glColor3d(0, 0, 0);
-			glutSolidTorus(2, 5, 100, 100);
-		glPopMatrix();
-	
-		// comeco da cabine
-		glPushMatrix();	
-			glTranslatef(0, 7, -35); // posição da cabine?
-			glColor3d(0, 0, 1);		  // comeco da cor no meio
-			glutSolidCube(45);		  // tamaho da cabine
-		glPopMatrix();
-
-		// roda traseira esquerda //
-		glPushMatrix();
-			glTranslatef(-24, -13.5, -40); // posição da roda 
-			glRotatef(90, 0, 1, 0);
-			glColor3d(0, 0, 0);
-			glutSolidTorus(2, 5, 100, 100);
-		glPopMatrix();
-
-		// roda traseira direita //
-		glPushMatrix();
-			glTranslatef(24, -13.5, -40); // posição da roda
-			glRotatef(90, 0, 1, 0); // angulo // altura //
-			glColor3d(0, 0, 0);
-			glutSolidTorus(2, 5, 100, 100);
-		glPopMatrix();
-	glPopMatrix();
-
-}
-
-// adicionar as formas a serem mostradas na cena
-void display()
+void men()
 {
-	const double a = glutGet(GLUT_ELAPSED_TIME) / 10;
-	GLfloat yellow[4] = {1, 1, 0, 1};
-
-	/* Limpa todos os pixels da tela */
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	DefineIluminacao();
-
-	glPushMatrix(); // comeco do chao
-		glTranslatef(0, -510, 0);
-		glColor3d(0.5, 0.5, 0.5); // cor do chão
-		glutSolidCube(1000);
-		glPopMatrix(); // fim do chao
-
-	polarView();
-
-	car();
-
-	// poste de luz //
-	glPushMatrix();				// comeco do poste
-	glTranslatef(-100, -7, 70); // comeco do tronco
-	glRotatef(90, -1, 0, 0);
-	glColor3d(0.5, 0.5, 0.5);
-	glutSolidCylinder(2, 50, 100, 20); // fim do tronco
-
-	// lampada //
-	glRotatef(90, 1, 0, 0); // comeco do lugar da lampada
-	glTranslatef(2.5, 50, 0);
-	glScalef(1.5, 0.333, 1);
-	glutSolidCube(5); // fim do lugar da lampada
-
-	glScalef(0.75, 3, 1); // comeco da lampada
-	glTranslatef(1.5, -1, 0);
-	glColor3d(1, 1, 0);
-	glutSolidSphere(1, 10, 10); // fim da lampada
-	glPopMatrix();
-
 	/** Boneco **/
 
 	// cabeça //
 	glScalef(1, 1, 1);
-	glTranslatef(-150, 20, 50);
+	glTranslatef(-50, 17, 50);
 	glColor3d(1, 1, 1);
 	glutSolidSphere(5, 200, 10);
 
@@ -525,6 +496,108 @@ void display()
 	glRotatef(0, -1, 0, 0);
 	glColor3d(1, 0, 0);
 	glutSolidCylinder(2, 16, 10, 2);
+}
+
+void light()
+{
+	// poste de luz //
+	glPushMatrix();				// comeco do poste
+	glTranslatef(-50, -11, 70); // comeco do tronco
+	glRotatef(90, -1, 0, 0);
+	glColor3d(0.5, 0.5, 0.5);
+	glutSolidCylinder(2, 50, 100, 20); // fim do tronco
+
+	// lampada //
+	glRotatef(90, 1, 0, 0); // comeco do lugar da lampada
+	glTranslatef(2.5, 50, 0);
+	glScalef(1.5, 0.333, 1);
+	glutSolidCube(5); // fim do lugar da lampada
+
+	glScalef(0.75, 3, 1); // comeco da lampada
+	glTranslatef(1.5, -1, 0);
+	glColor3d(1, 1, 0);
+	glutSolidSphere(1, 10, 10); // fim da lampada
+	glPopMatrix();
+}
+
+void car()
+{
+
+	glPushMatrix(); // comeco do carro
+	glTranslatef(0, 10, -10);
+	glColor3d(1, 0, 0); // comeco da cor no meio
+	glutSolidCube(30);
+
+	glPushMatrix();			// comeco do carro
+	glTranslatef(0, -7, 8); // posição do cubo azul
+	glColor3d(0, 0, 1);		// cubo azul
+	glutSolidCube(15);
+	glPopMatrix();
+
+	// roda esquerda //
+	glPushMatrix();
+	glTranslatef(16, -13.5, 0); // posição da roda
+	glRotatef(90, 0, 1, 0);
+	glColor3d(0, 0, 0);
+	glutSolidTorus(2, 5, 100, 100);
+	glPopMatrix();
+
+	// roda direita //
+	glPushMatrix();
+	glTranslatef(-16, -13.5, -2); // posição da roda
+	glRotatef(90, 0, 1, 0);
+	glColor3d(0, 0, 0);
+	glutSolidTorus(2, 5, 100, 100);
+	glPopMatrix();
+
+	// comeco da cabine
+	glPushMatrix();
+	glTranslatef(0, 7, -35); // posição da cabine?
+	glColor3d(0, 0, 1);		 // comeco da cor no meio
+	glutSolidCube(45);		 // tamaho da cabine
+	glPopMatrix();
+
+	// roda traseira esquerda //
+	glPushMatrix();
+	glTranslatef(-24, -13.5, -40); // posição da roda
+	glRotatef(90, 0, 1, 0);
+	glColor3d(0, 0, 0);
+	glutSolidTorus(2, 5, 100, 100);
+	glPopMatrix();
+
+	// roda traseira direita //
+	glPushMatrix();
+	glTranslatef(24, -13.5, -40); // posição da roda
+	glRotatef(90, 0, 1, 0);		  // angulo // altura //
+	glColor3d(0, 0, 0);
+	glutSolidTorus(2, 5, 100, 100);
+	glPopMatrix();
+	glPopMatrix();
+}
+
+// adicionar as formas a serem mostradas na cena
+void display()
+{
+	const double a = glutGet(GLUT_ELAPSED_TIME) / 10;
+	GLfloat yellow[4] = {1, 1, 0, 1};
+
+	/* Limpa todos os pixels da tela */
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	DefineIluminacao();
+
+	glPushMatrix(); // comeco do chao
+	glTranslatef(0, -510, 0);
+	glColor3d(0.5, 0.5, 0.5); // cor do chão
+	glutSolidCube(1000);
+	glPopMatrix(); // fim do chao
+
+	polarView();
+
+	car();
+
+	light();
+
+	men();
 
 	sun();
 
@@ -532,7 +605,7 @@ void display()
 
 	tree();
 
-	house ();
+	house();
 
 	glutSwapBuffers();
 }
@@ -556,45 +629,72 @@ void myReshape(int winWidth, int winHeight) // reshape window
 
 void keySpecial(int key, int x, int y)
 {
-	printf("(%d, %d)\n", x, y);
 	switch (key)
 	{
-	case GLUT_KEY_LEFT:
-		printf("Left pressed\n");
-		break;
 	case GLUT_KEY_UP:
-		printf("Up pressed\n");
+		yr = yr + 1;
+		glutPostRedisplay();
+		printf("%d\n", y);
+		break;
+	case GLUT_KEY_DOWN:
+		yr--;
+		printf("%d\n", y);
+		glutPostRedisplay();
+		break;
+	case GLUT_KEY_LEFT:
+		xr--;
+		printf("%d\n", x);
+		glutPostRedisplay();
+		break;
+	case GLUT_KEY_RIGHT:
+		xr++;
+		printf("%d\n", x);
+		glutPostRedisplay();
 		break;
 	}
-
-	if (glutGetModifiers() == GLUT_ACTIVE_ALT) // GLUT_ACTIVE_CTRL ou SHIFT
-		printf("ALT pressed\n");
 }
 
 void myKeyboard(unsigned char c, int x, int y)
 {
-	switch(c)
-    {
-        case  27: exit(0);          break; // ESC
+	switch (c)
+	{
+	case 27:
+		exit(0);
+		break; // ESC
 
-        case 'a': azimuth   -= 0.5; break;
+	case 'a':
+		azimuth -= 0.5;
+		break;
 
-        case 'd': azimuth   += 0.5; break;
+	case 'd':
+		azimuth += 0.5;
+		break;
 
-        case 'w': incidence -= 0.5; break;
+	case 'w':
+		incidence -= 0.5;
+		break;
 
-        case 's': incidence += 0.5; break;
+	case 's':
+		incidence += 0.5;
+		break;
 
-        case 'q': twist     -= 0.5; break;
+	case 'q':
+		twist -= 0.5;
+		break;
 
-        case 'e': twist     += 0.5; break;
+	case 'e':
+		twist += 0.5;
+		break;
 
-        case 'z': distance  -= 0.1; break;
+	case 'z':
+		distance -= 0.1;
+		break;
 
-        case 'x': distance  += 0.1; break;
-
-    }
-    glutPostRedisplay();
+	case 'x':
+		distance += 0.1;
+		break;
+	}
+	glutPostRedisplay();
 }
 
 // imprimir as coordenadas com o clique do mouse
